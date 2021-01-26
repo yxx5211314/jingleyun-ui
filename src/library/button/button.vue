@@ -1,12 +1,14 @@
 <template>
-  <div class="ly-button" :class="plain&&type===''?'ly-button-plain':plain&&type==='primary'?'ly-button-primary-plain':plain&&type==='success'?'ly-button-success-plain':plain&&type==='info'?'ly-button-info-plain':type==='primary'?'ly-button-primary':type==='success'?'ly-button-success':
-       type==='info'?'ly-button-info':type==='warning'?'ly-button-warning':type==='danger'?'ly-button-danger':''" :style="{'background':(background_color?background_color:'')}"
-       @click="ColorClick">
+  <button class="ly-button" type="button"
+       :class="[type==='text'&&disabled?'ly-is-text_disabled':'',type==='text'?'ly-is-text':'',disabled?'ly-is-disabled':'',size==='medium'?'ly-button-medium':size==='small'?'ly-button-small':size==='mini'?'ly-button-mini':'',plain&&type===''?'ly-button-plain':plain&&type==='primary'?'ly-button-primary-plain':plain&&type==='success'?'ly-button-success-plain':plain&&type==='info'?'ly-button-info-plain':
+        plain&&type==='warning'?'ly-button-warning-plain':plain&&type==='danger'?'ly-button-danger-plain':type==='primary'?'ly-button-primary':type==='success'?'ly-button-success':type==='info'?'ly-button-info':
+        type==='warning'?'ly-button-warning':type==='danger'?'ly-button-danger':'']" :style="{'background':(background_color?background_color:''),'border-radius':(radius?radius+'px':''),'color':(Colors?Colors:'')}"
+       @click="ColorClick();change()">
     <span>
       <slot>
       </slot>
     </span>
-  </div>
+  </button>
 </template>
 
 <script>
@@ -18,6 +20,17 @@ export default {
         default:''
       },
       plain:{
+        type:Boolean,
+        default:false
+      },
+      radius:{
+        type:String
+      },
+      size:{
+        type:String,
+        default:''
+      },
+      disabled:{
         type:Boolean,
         default:false
       }
@@ -34,68 +47,86 @@ export default {
   methods:{
     //点击背景颜色闪烁事件
     ColorClick(){
-      if(this.type === ''){
-        let timer,timer2
-        timer=setTimeout(()=>{
-          this.background_color='rgba(64,158,255,0.2)'
-          clearTimeout(timer)
-        },10)
-        timer2=setTimeout(()=>{
-          this.background_color=null
-          clearTimeout(timer2)
-        },100)
-      }else if(this.type === 'primary'){
-        let timer,timer2
-        timer=setTimeout(()=>{
-          this.background_color='rgba(64,158,255,1)'
-          clearTimeout(timer)
-        },10)
-        timer2=setTimeout(()=>{
-          this.background_color=null
-          clearTimeout(timer2)
-        },100)
-      }else if(this.type === 'success'){
-        let timer,timer2
-        timer=setTimeout(()=>{
-          this.background_color='rgba(103,194,58,1)'
-          clearTimeout(timer)
-        },10)
-        timer2=setTimeout(()=>{
-          this.background_color=null
-          clearTimeout(timer2)
-        },100)
-      }else if(this.type === 'info'){
-        let timer,timer2
-        timer=setTimeout(()=>{
-          this.background_color='rgba(144,147,153,1)'
-          clearTimeout(timer)
-        },10)
-        timer2=setTimeout(()=>{
-          this.background_color=null
-          clearTimeout(timer2)
-        },100)
-      }else if(this.type === 'warning'){
-        let timer,timer2
-        timer=setTimeout(()=>{
-          this.background_color='rgba(230,162,60,1)'
-          clearTimeout(timer)
-        },10)
-        timer2=setTimeout(()=>{
-          this.background_color=null
-          clearTimeout(timer2)
-        },100)
-      }else if(this.type === 'danger'){
-        let timer,timer2
-        timer=setTimeout(()=>{
-          this.background_color='rgba(245,108,108,1)'
-          clearTimeout(timer)
-        },10)
-        timer2=setTimeout(()=>{
-          this.background_color=null
-          clearTimeout(timer2)
-        },100)
+      if(this.disabled!==true){
+        if(this.type === ''){
+          let timer,timer2
+          timer=setTimeout(()=>{
+            this.background_color='rgba(64,158,255,0.2)'
+            clearTimeout(timer)
+          },10)
+          timer2=setTimeout(()=>{
+            this.background_color=null
+            clearTimeout(timer2)
+          },100)
+        }else if(this.type === 'primary'){
+          let timer,timer2
+          timer=setTimeout(()=>{
+            this.background_color='rgba(64,158,255,1)'
+            clearTimeout(timer)
+          },10)
+          timer2=setTimeout(()=>{
+            this.background_color=null
+            clearTimeout(timer2)
+          },100)
+        }else if(this.type === 'success'){
+          let timer,timer2
+          timer=setTimeout(()=>{
+            this.background_color='rgba(103,194,58,1)'
+            clearTimeout(timer)
+          },10)
+          timer2=setTimeout(()=>{
+            this.background_color=null
+            clearTimeout(timer2)
+          },100)
+        }else if(this.type === 'info'){
+          let timer,timer2
+          timer=setTimeout(()=>{
+            this.background_color='rgba(144,147,153,1)'
+            clearTimeout(timer)
+          },10)
+          timer2=setTimeout(()=>{
+            this.background_color=null
+            clearTimeout(timer2)
+          },100)
+        }else if(this.type === 'warning'){
+          let timer,timer2
+          timer=setTimeout(()=>{
+            this.background_color='rgba(230,162,60,1)'
+            clearTimeout(timer)
+          },10)
+          timer2=setTimeout(()=>{
+            this.background_color=null
+            clearTimeout(timer2)
+          },100)
+        }else if(this.type === 'danger'){
+          let timer,timer2
+          timer=setTimeout(()=>{
+            this.background_color='rgba(245,108,108,1)'
+            clearTimeout(timer)
+          },10)
+          timer2=setTimeout(()=>{
+            this.background_color=null
+            clearTimeout(timer2)
+          },100)
+        }else if(this.type === 'text'){
+          let timer,timer2
+          timer=setTimeout(()=>{
+            this.Colors='rgba(64,158,255,0.7)'
+            clearTimeout(timer)
+          },10)
+          timer2=setTimeout(()=>{
+            this.Colors=null
+            clearTimeout(timer2)
+          },100)
+        }
       }
     },
+    //点击事件
+    change(){
+      if(this.disabled!==true){
+        this.$emit('click')
+      }
+    }
   }
 }
 </script>
@@ -152,6 +183,18 @@ export default {
     color:#909399;
     border-color: #909399;
   }
+  .ly-button-warning-plain{
+    background:rgba(230,162,60,0.1);
+    box-shadow: 0 0 5px 0 rgba(232,237,250,.5),0 2px 4px 0 rgba(232,237,250,.5);
+    color:#E6A23C;
+    border-color: #E6A23C;
+  }
+  .ly-button-danger-plain{
+    background:rgba(245,108,108,0.1);
+    box-shadow: 0 0 5px 0 rgba(232,237,250,.5),0 2px 4px 0 rgba(232,237,250,.5);
+    color:#F56C6C;
+    border-color: #F56C6C;
+  }
   .ly-button-primary{
     background:#409EFF;
     color:#fff;
@@ -184,7 +227,17 @@ export default {
   }
   .ly-button-info-plain:hover{
     background:rgba(144,147,153,0.8);
-    border-color:#67C23A;
+    border-color:#909399;
+    color:#fff;
+  }
+  .ly-button-warning-plain:hover{
+    background:rgba(230,162,60,0.8);
+    border-color:#E6A23C;
+    color:#fff;
+  }
+  .ly-button-danger-plain:hover{
+    background:rgba(245,108,108,0.8);
+    border-color:#F56C6C;
     color:#fff;
   }
   .ly-button-primary:hover{
@@ -216,5 +269,43 @@ export default {
     color:#fff;
     border-color:#F56C6C
   }
-
+  .ly-button+.ly-button {
+    margin-left: 10px;
+  }
+  .ly-button-medium{
+    padding: 10px 20px;
+  }
+  .ly-button-small{
+    padding: 9px 15px;
+    font-size: 12px;
+  }
+  .ly-button-mini{
+    padding: 7px 15px;
+    font-size: 12px;
+  }
+  .ly-is-disabled{
+    cursor: not-allowed;
+    background-image: none;
+  }
+  /*//文字button*/
+  .ly-is-text{
+    border-color: transparent;
+    color: #409eff;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ly-is-text:hover{
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ly-is-text_disabled{
+    color:#c0c4cc
+  }
+  .ly-is-text_disabled:hover{
+    color:#c0c4cc
+  }
 </style>
