@@ -50,6 +50,16 @@
       <ly-button radius="20" type="text" disabled>圆角按钮</ly-button>
       <ly-button radius="20" type="text">主要按钮</ly-button>
     </div>
+
+    <div style="margin-top:50px">
+      <ly-flex :span='100' justify='space-between' align='middle' className='aaa'>
+        <ly-flex :span='10'>2222</ly-flex>
+        <ly-flex :span='10'>2222</ly-flex>
+        <ly-flex :span='10'>2222</ly-flex>
+        <ly-flex :span='10'>2222</ly-flex>
+      </ly-flex>
+    </div>
+
   </div>
 </template>
 
@@ -62,8 +72,6 @@ export default {
     }
   },
   methods:{
-    ss(){console.log("222")
-    }
   }
 }
 </script>

@@ -132,6 +132,9 @@ export default {
 </script>
 
 <style scoped>
+  button{
+    box-sizing: border-box;
+  }
   .ly-button{
     display: inline-block;
     line-height: 1;
@@ -286,6 +289,11 @@ export default {
   .ly-is-disabled{
     cursor: not-allowed;
     background-image: none;
+    opacity: 0.5;
+  }
+  .ly-is-disabled:hover{
+    box-shadow: none;
+    border:1px solid #dcdfe6
   }
   /*//文字button*/
   .ly-is-text{
@@ -303,9 +311,9 @@ export default {
     padding-right: 0;
   }
   .ly-is-text_disabled{
-    color:#c0c4cc
+    color:#c0c4cc;
   }
   .ly-is-text_disabled:hover{
-    color:#c0c4cc
+    color:#c0c4cc;
   }
 </style>

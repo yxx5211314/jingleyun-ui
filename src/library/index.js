@@ -1,7 +1,9 @@
 import ButtonCom from './button'
+import lyflexCom from './lyflex'
 //组件存储
 const components = [
-  ButtonCom
+  ButtonCom,
+  lyflexCom
 ]
 //全局引入
 const install = (Vue)=>{
